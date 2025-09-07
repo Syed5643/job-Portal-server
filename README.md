@@ -57,3 +57,16 @@ npm install
 
 # Start the server
 node server.js
+
+### 4. Challenges Faced and Solutions
+
+During the project, I encountered several challenges which provided valuable learning experiences:
+
+* **Problem:** My initial Git setup was incorrect, causing it to track my entire user directory.
+    * **Solution:** I learned how to properly diagnose the issue, remove the incorrect `.git` repository, navigate to the correct project folder, and re-initialize it to track only the project files.
+
+* **Problem:** The backend deployment on Render failed because it couldn't find the `package.json` file.
+    * **Solution:** I realized my local file structure was wrong. I corrected it by moving the backend's `package.json` into the `job_portal_backend` folder and pushed the fix, which led to a successful deployment.
+
+* **Problem:** The login feature wasn't redirecting on the live site.
+    * **Solution:** I learned to use the browser's Developer Console (specifically the Network tab) to debug the issue. I discovered that my backend server was not running and that I needed both the frontend and backend servers to be active for the full-stack application to work.
