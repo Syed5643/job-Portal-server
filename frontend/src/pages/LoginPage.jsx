@@ -15,7 +15,7 @@ function LoginPage() {
         
         try {
             console.log('Attempting to log in with:', email); // DEBUG LOG 1
-            const response = await axios.post('http://localhost:5000/api/login', { email, password });
+            const response = await axios.post('https://job-portal-server-1-44l9.onrender.com/api/login', { email, password });
             const token = response.data.token;
             
             console.log('Login successful, token received:', token); // DEBUG LOG 2

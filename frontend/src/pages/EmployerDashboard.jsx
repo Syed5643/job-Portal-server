@@ -18,7 +18,7 @@ function EmployerDashboard() {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/my-jobs', {
+      const response = await axios.get('https://job-portal-server-1-44l9.onrender.com/api/my-jobs', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMyJobs(response.data.jobs);
@@ -46,7 +46,7 @@ function EmployerDashboard() {
     setMessage('');
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/jobs', jobDetails, {
+      await axios.post('https://job-portal-server-1-44l9.onrender.com/api/jobs', jobDetails, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage('Job posted successfully!');

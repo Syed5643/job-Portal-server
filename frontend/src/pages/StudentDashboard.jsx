@@ -25,7 +25,7 @@ function StudentDashboard() {
 
       const params = new URLSearchParams(currentFilters).toString();
       
-      const response = await axios.get(`http://localhost:5000/api/jobs?${params}`, {
+      const response = await axios.get(`https://job-portal-server-1-44l9.onrender.com/api/jobs?${params}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -63,7 +63,7 @@ function StudentDashboard() {
         return;
       }
 
-      const response = await axios.post(`http://localhost:5000/api/jobs/${jobId}/apply`, 
+      const response = await axios.post(`https://job-portal-server-1-44l9.onrender.com/api/jobs/${jobId}/apply`, 
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

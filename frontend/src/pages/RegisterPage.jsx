@@ -19,7 +19,7 @@ function RegisterPage() {
         return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', {
+      const response = await axios.post('https://job-portal-server-1-44l9.onrender.com/api/signup', {
         name, email, password, role,
       });
       setMessage(response.data.message);
