@@ -26,37 +26,16 @@ This is a complete full-stack web application for a job portal, built as a techn
 
 ## Tech Stack
 
-* **Frontend:** React (with Vite), Axios, React Router
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB (with Mongoose)
-* **Authentication:** JWT, bcrypt.js
+* **Frontend:** React (with Vite), Axios, React Router - For a fast and interactive user interface.
+* **Backend:** Node.js, Express.js - To build a lightweight and efficient backend API.
+* **Database:** MongoDB (with Mongoose) - For a flexible database that handles user and job data easily.
+* **Authentication:** JWT, bcrypt.js - To implement secure, token-based authentication and protect routes.
 * **Deployment:**
     * Frontend deployed on **Netlify**.
     * Backend deployed on **Render**.
     * Database hosted on **MongoDB Atlas**.
 
 ---
-
-## Local Setup and Installation
-
-To run this project on your local machine:
-
-### 1. Backend Setup
-
-```bash
-# Navigate to the backend folder
-cd job_portal_backend
-
-# Install dependencies
-npm install
-
-# Create a .env file and add your MONGO_URI and JWT_SECRET
-# Example:
-# MONGO_URI=your_mongodb_connection_string
-# JWT_SECRET=your_jwt_secret
-
-# Start the server
-node server.js
 
 ### 4. Challenges Faced and Solutions
 
