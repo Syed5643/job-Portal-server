@@ -26,10 +26,10 @@ This is a complete full-stack web application for a job portal, built as a techn
 
 ## Tech Stack
 
-* **Frontend:** React (with Vite), Axios, React Router
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB (with Mongoose)
-* **Authentication:** JWT, bcrypt.js
+* **Frontend:** React (with Vite), Axios, React Router - For a fast and interactive user interface.
+* **Backend:** Node.js, Express.js - To build a lightweight and efficient backend API.
+* **Database:** MongoDB (with Mongoose) - For a flexible database that handles user and job data easily.
+* **Authentication:** JWT, bcrypt.js - To implement secure, token-based authentication and protect routes.
 * **Deployment:**
     * Frontend deployed on **Netlify**.
     * Backend deployed on **Render**.
@@ -37,23 +37,15 @@ This is a complete full-stack web application for a job portal, built as a techn
 
 ---
 
-## Local Setup and Installation
+### 4. Challenges Faced and Solutions
 
-To run this project on your local machine:
+During the project, I encountered several challenges which provided valuable learning experiences:
 
-### 1. Backend Setup
+* **Problem:** My initial Git setup was incorrect, causing it to track my entire user directory.
+    * **Solution:** I learned how to properly diagnose the issue, remove the incorrect `.git` repository, navigate to the correct project folder, and re-initialize it to track only the project files.
 
-```bash
-# Navigate to the backend folder
-cd job_portal_backend
+* **Problem:** The backend deployment on Render failed because it couldn't find the `package.json` file.
+    * **Solution:** I realized my local file structure was wrong. I corrected it by moving the backend's `package.json` into the `job_portal_backend` folder and pushed the fix, which led to a successful deployment.
 
-# Install dependencies
-npm install
-
-# Create a .env file and add your MONGO_URI and JWT_SECRET
-# Example:
-# MONGO_URI=your_mongodb_connection_string
-# JWT_SECRET=your_jwt_secret
-
-# Start the server
-node server.js
+* **Problem:** The login feature wasn't redirecting on the live site.
+    * **Solution:** I learned to use the browser's Developer Console (specifically the Network tab) to debug the issue. I discovered that my backend server was not running and that I needed both the frontend and backend servers to be active for the full-stack application to work.

@@ -40,41 +40,33 @@ const authMiddleware = (req, res, next) => {
 
 // ========================== ROUTES ========================== //
 
-// Root route
 app.get("/", (req, res) => {
   res.json({ message: "Job Portal Backend Running 🚀" });
 });
 
-// Test route
 app.get("/api/test", (req, res) => {
   res.json({ message: "Hello from Job Portal API 🚀" });
 });
 
-// 🔹 Signup route
 app.post("/api/signup", async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
-    // Validate required fields
     if (!areFieldsFilled({ name, email, password, role })) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Validate email
     if (!isValidEmail(email)) {
       return res.status(400).json({ message: "Invalid email format" });
     }
 
-    // Validate password
     if (!isValidPassword(password)) {
       return res.status(400).json({ message: "Password must be at least 6 characters" });
     }
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: "User already exists" });
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, email, password: hashedPassword, role });
     await user.save();
@@ -86,7 +78,6 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// 🔹 Login route
 app.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -114,7 +105,6 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// 🔹 POST /api/jobs - Employers post jobs
 app.post("/api/jobs", authMiddleware, async (req, res) => {
   try {
     const { title, company, location, description } = req.body;
@@ -137,7 +127,6 @@ app.post("/api/jobs", authMiddleware, async (req, res) => {
   }
 });
 
-// 🔹 GET /api/jobs - View & Search jobs
 app.get("/api/jobs", authMiddleware, async (req, res) => {
   try {
     const { title, location, company } = req.query;
@@ -154,7 +143,6 @@ app.get("/api/jobs", authMiddleware, async (req, res) => {
   }
 });
 
-// 🔹 POST /api/jobs/:id/apply - Students apply
 app.post("/api/jobs/:id/apply", authMiddleware, async (req, res) => {
   try {
     if (req.user.role !== "student") {
@@ -178,7 +166,6 @@ app.post("/api/jobs/:id/apply", authMiddleware, async (req, res) => {
   }
 });
 
-// 🔹 GET /api/jobs/:id/applicants - Employers see applicants
 app.get("/api/jobs/:id/applicants", authMiddleware, async (req, res) => {
   try {
     const job = await Job.findById(req.params.id).populate("applicants", "name email");
@@ -195,7 +182,6 @@ app.get("/api/jobs/:id/applicants", authMiddleware, async (req, res) => {
   }
 });
 
-// 🔹 GET /api/my-applications - Students view applied jobs
 app.get("/api/my-applications", authMiddleware, async (req, res) => {
   try {
     if (req.user.role !== "student") {
@@ -213,7 +199,6 @@ app.get("/api/my-applications", authMiddleware, async (req, res) => {
   }
 });
 
-// 🔹 GET /api/my-jobs - Employers view posted jobs
 app.get("/api/my-jobs", authMiddleware, async (req, res) => {
   try {
     if (req.user.role !== "employer") {
@@ -228,7 +213,6 @@ app.get("/api/my-jobs", authMiddleware, async (req, res) => {
   }
 });
 
-// 🔹 DELETE /api/jobs/:id - Employer deletes their job
 app.delete("/api/jobs/:id", authMiddleware, async (req, res) => {
   try {
     if (req.user.role !== "employer") {
@@ -250,12 +234,10 @@ app.delete("/api/jobs/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// Fallback for unknown routes
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
