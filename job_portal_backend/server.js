@@ -10,7 +10,7 @@ const Job = require("./models/Job");
 const { isValidEmail, isValidPassword, areFieldsFilled } = require("./utils/validate");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 // Middleware
 app.use(cors());
